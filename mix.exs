@@ -7,6 +7,7 @@ defmodule Cuandoesquincena.Mixfile do
      elixir: "~> 1.2",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     escript: [main_module: Cuandoesquincena],
      deps: deps]
   end
 
@@ -30,6 +31,7 @@ defmodule Cuandoesquincena.Mixfile do
   defp deps do
     [
       {:cowboy, "~> 1.0.0"},
+      {:tzdata, "~> 0.5.7"},
       {:timex, "~> 2.1.4"},
       {:plug, "~> 1.0"},
       {:poison, "~> 2.0"}

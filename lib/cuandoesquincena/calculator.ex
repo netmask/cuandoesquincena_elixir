@@ -1,18 +1,26 @@
 defmodule Cuandoesquincena.Calculator do
   use Timex
 
+  def is_today? do
+    Date.today == next_real_paydate
+  end
+
   def seconds_until do
-    DateTime.today |> next_canonical_paydate |> real_paydate |> Timex.diff(DateTime.today, :seconds)
+    next_real_paydate |> Timex.diff(Date.today, :seconds)
   end
 
-  defp real_paydate(%Timex.DateTime{day: day} = canonical) do
-    weekday = Timex.weekday canonical
-    %{canonical | day: (day + (%{6 => -1, 7 => -2}[weekday] || 0 )) }
+  def next_real_paydate do
+    Date.today |> next_canonical_paydate |> fix_workday
   end
 
-  defp next_canonical_paydate(%Timex.DateTime{year: year, month: month, day: day} = payday)  do
+  def fix_workday(%Timex.Date{day: day} = canonical) do
+    %{canonical | day: Timex.weekday(canonical) |> weekday(day) }
+  end
+
+  def next_canonical_paydate(%Timex.Date{year: year, month: month, day: day} = payday)  do
     canonical_payday = if day > 15, do: :calendar.last_day_of_the_month(year, month), else: 15
     %{payday | day: canonical_payday}
   end
 
+  def weekday(weekday_number, day), do: (day + (%{6 => -1, 7 => -2}[weekday_number])) || 0
 end

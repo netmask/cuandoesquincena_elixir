@@ -15,8 +15,15 @@ defmodule Cuandoesquincena.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :cowboy, :timex],
-     mod: {Cuandoesquincena, []}]
+    [
+      applications: [:logger, :tzdata, :cowboy, :timex],
+      env: env,
+      mod: {Cuandoesquincena, []}
+    ]
+  end
+
+  defp env do
+    [autoupdate: :enabled, data_dir: nil]
   end
 
   # Dependencies can be Hex packages:
@@ -31,7 +38,7 @@ defmodule Cuandoesquincena.Mixfile do
   defp deps do
     [
       {:cowboy, "~> 1.0.0"},
-      {:tzdata, "~> 0.5.7"},
+      {:tzdata, "~> 0.5.7", override: true},
       {:timex, "~> 2.1.4"},
       {:plug, "~> 1.0"},
       {:poison, "~> 2.0"}

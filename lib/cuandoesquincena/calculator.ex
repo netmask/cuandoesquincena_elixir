@@ -13,6 +13,7 @@ defmodule Cuandoesquincena.Calculator do
     Date.today |> next_canonical_paydate |> fix_workday
   end
 
+
   def fix_workday(%Timex.Date{day: day} = canonical) do
     %{canonical | day: Timex.weekday(canonical) |> weekday(day) }
   end

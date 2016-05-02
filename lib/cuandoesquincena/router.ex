@@ -9,6 +9,7 @@ defmodule Cuandoesquincena.Router do
   plug Plug.Static, at: "/", from: "/Users/netmask/Projects/personal/cuandoesquincena/public"
   plug :match
   plug :dispatch
+  plug Plug.Logger
 
 
   get "/api" do

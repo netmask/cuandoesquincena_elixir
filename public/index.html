@@ -7,21 +7,30 @@
   <title>Cuando es Quincena</title>
   <meta name="author" content="Devmask">
 
+  <link rel="stylesheet" href="furtive.min.css?v=1.0">
   <link rel="stylesheet" href="style.css?v=1.0">
 </head>
 
 <body>
 
-  <div class="container">
-    <h2>Hoy es quincena?</h2>
-    <div class="counter">
-      <div class="counter-body">
-        <span class="days"><content></content></span>
-        <span class="hours"><content></content></span>
-        <span class="minutes"><content></content></span>
-        <span class="seconds"><content></content></span>
+  <div class="grid container">
+    <div class="content-top"></div>
+    <div class="content">
+      <div class="grid-row title">
+        <h2 class="grd-row-col-6">¿Hoy es quincena?</h2>
+      </div>
+      <h1 class="grid-row quincena-mark"><content></content></h1>
+      <h3 class="grid-row quincena-silly"><content></content></h3>
+      <div class="grid-row counter">
+        <div class="grd-row-col-6 counter-body">
+          <span class="grd-row-col-2-6 days"><content></content></span>
+          <span class="grd-row-col-2-6 hours"><content></content></span>
+          <span class="grd-row-col-2-6 minutes"><content></content></span>
+          <span class="grd-row-col-2-6 seconds"><content></content></span>
+        </div>
       </div>
     </div>
+    <div class="content-bottom"> api.cuandoesquincena.com </div>
   </div>
 
   <script src="quincena.js"></script>

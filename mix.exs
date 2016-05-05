@@ -16,7 +16,7 @@ defmodule Cuandoesquincena.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     [
-      applications: [:logger, :tzdata, :cowboy, :timex],
+      applications: [:logger, :tzdata, :cowboy, :timex, :plug, :poison],
       env: env,
       mod: {Cuandoesquincena, []}
     ]
@@ -41,7 +41,9 @@ defmodule Cuandoesquincena.Mixfile do
       {:tzdata, "~> 0.5.7", override: true},
       {:timex, "~> 2.1.4"},
       {:plug, "~> 1.0"},
-      {:poison, "~> 2.0"}
+      {:poison, "~> 2.0"},
+      {:exrm, "~> 1.0.0"},
+      {:exrm_docker, "~> 0.0.4"}
     ]
   end
 end
